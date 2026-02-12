@@ -279,14 +279,14 @@ HTML_TEMPLATE = """\
         }}
         .streetview-arrow .arrow-icon {{
             position: absolute;
-            width: 100%;
-            height: 100%;
+            width: 75%;
+            height: 75%;
             top: 0;
             left: 0;
             border-radius: 50%;
-            background: white;
+            background: #4285f4;
             box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
-            transition: box-shadow 0.15s ease;
+            transition: box-shadow 0.20s ease;
         }}
         .streetview-arrow:hover .arrow-icon {{
             box-shadow: 0 0 0 3px #4285f4;
@@ -298,7 +298,7 @@ HTML_TEMPLATE = """\
             visibility: hidden;
             position: absolute;
             background-color: rgba(0, 0, 0, 0.75);
-            color: #fff;
+            color: #ffffff;
             border-radius: 4px;
             padding: 4px 10px;
             white-space: nowrap;
@@ -319,6 +319,13 @@ HTML_TEMPLATE = """\
     <script src="../src/js/pannellum.js"></script>
     <script>
         var tourConfig = {tour_json};
+
+        // Allow direct linking to a scene via URL hash (e.g., tour.html#job_030_setup_005)
+        var hash = window.location.hash.slice(1);
+        if (hash && tourConfig.scenes[hash]) {{
+            tourConfig.default.firstScene = hash;
+        }}
+
         var viewer = pannellum.viewer('panorama', tourConfig);
 
         // On each scene load, create .arrow-icon child divs
