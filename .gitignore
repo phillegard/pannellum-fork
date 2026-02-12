@@ -12,3 +12,6 @@ utils/doc/generated_docs
 
 # Ignore logs
 tests/*.log
+
+# Ignore example data
+example_data/

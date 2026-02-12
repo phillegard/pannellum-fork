@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panorama Tour</title>
+    <link rel="stylesheet" href="../src/css/pannellum.css">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: #000;
+        }
+        #panorama {
+            width: 100vw;
+            height: 100vh;
+        }
+
+        /* Street View arrow hotspot styling */
+        .pnlm-hotspot-base.streetview-arrow {
+            width: 40px;
+            height: 40px;
+            margin: -20px 0 0 -20px;
+            background: none;
+            cursor: pointer;
+        }
+        .streetview-arrow .arrow-icon {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            border-radius: 50%;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
+            transition: box-shadow 0.15s ease;
+        }
+        .streetview-arrow:hover .arrow-icon {
+            box-shadow: 0 0 0 3px #4285f4;
+        }
+        .pnlm-hotspot-base.streetview-arrow:hover {
+            background: none;
+        }
+        .pnlm-hotspot-base.streetview-arrow span {
+            visibility: hidden;
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.75);
+            color: #fff;
+            border-radius: 4px;
+            padding: 4px 10px;
+            white-space: nowrap;
+            font-size: 13px;
+            bottom: 48px;
+            left: 50%;
+            transform: translateX(-50%);
+            pointer-events: none;
+        }
+        .pnlm-hotspot-base.streetview-arrow:hover span {
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+    <div id="panorama"></div>
+    <script src="../src/js/libpannellum.js"></script>
+    <script src="../src/js/pannellum.js"></script>
+    <script>
+        var tourConfig = {
+  "default": {
+    "firstScene": "job_030_setup_002",
+    "sceneFadeDuration": 1000,
+    "autoLoad": true,
+    "compass": true
+  },
+  "scenes": {
+    "job_030_setup_002": {
+      "title": "Setup 002",
+      "panorama": "../example_data/Job 030- Setup 002.jpg",
+      "northOffset": -0.05,
+      "hotSpots": [
+        {
+          "pitch": 0,
+          "yaw": 102.82,
+          "type": "scene",
+          "text": "Setup 003 (7.2m)",
+          "sceneId": "job_030_setup_003",
+          "targetYaw": "sameAzimuth",
+          "targetPitch": "same",
+          "cssClass": "streetview-arrow",
+          "scale": true
+        },
+        {
+          "pitch": 0,
+          "yaw": 90.65,
+          "type": "scene",
+          "text": "Setup 004 (16.1m)",
+          "sceneId": "job_030_setup_004",
+          "targetYaw": "sameAzimuth",
+          "targetPitch": "same",
+          "cssClass": "streetview-arrow",
+          "scale": true
+        },
+        {
+          "pitch": 0,
+          "yaw": 66.58,
+          "type": "scene",
+          "text": "Setup 005 (14.4m)",
+          "sceneId": "job_030_setup_005",
+          "targetYaw": "sameAzimuth",
+          "targetPitch": "same",
+          "cssClass": "streetview-arrow",
+          "scale": true
+        },
+        {
+          "pitch": 0,
+          "yaw": 34.3,
+          "type": "scene",
+          "text": "Setup 006 (8.2m)",
+          "sceneId": "job_030_setup_006",
+          "targetYaw": "sameAzimuth",
+          "targetPitch": "same",
+          "cssClass": "streetview-arrow",
+          "scale": true
+        }
+      ],
+      "hotSpotDebug": true
+    },
+    "job_030_setup_003": {
+      "title": "Setup 003",
+      "panorama": "../example_data/Job 030- Setup 003.jpg",
+      "northOffset": 9.58,
+      "hotSpots": [
+        {
+          "pitch": 0,
+          "yaw": -86.82,
+          "type": "scene",
+          "text": "Setup 002 (7.2m)",
+          "sceneId": "job_030_setup_002",
+          "targetYaw": "sameAzimuth",
+          "targetPitch": "same",
+          "cssClass": "streetview-arrow",
+          "scale": true
+        },
+        {
+          "pitch": 0,
+          "yaw": 71.46,
+          "type": "scene",
+          "text": "Setup 004 (9.2m)",
+          "sceneId": "job_030_setup_004",
+          "targetYaw": "sameAzimuth",
+          "targetPitch": "same",
+          "cssClass": "streetview-arrow",
+          "scale": true
+        },
+        {
+          "pitch": 0,
+          "yaw": 30.53,
+          "type": "scene",
+          "text": "Setup 005 (9.6m)",
+          "sceneId": "job_030_setup_005",
+          "targetYaw": "sameAzimuth",
+          "targetPitch": "same",
+          "cssClass": "streetview-arrow",
+          "scale": true
+        },
+        {
+          "pitch": 0,
+          "yaw": -25.78,
+          "type": "scene",
+          "text": "Setup 006 (8.7m)",
+          "sceneId": "job_030_setup_006",
+          "targetYaw": "sameAzimuth",
+          "targetPitch": "same",
+          "cssClass": "streetview-arrow",
+          "scale": true
+        }
+      ],
+      "hotSpotDebug": true
+    },
+    "job_030_setup_004": {
+      "title": "Setup 004",
+      "panorama": "../example_data/Job 030- Setup 004.jpg",
+      "northOffset": 81.27,
+      "hotSpots": [
+        {
+          "pitch": 0,
+          "yaw": -170.68,
+          "type": "scene",
+          "text": "Setup 002 (16.1m)",
+          "sceneId": "job_030_setup_002",
+          "targetYaw": "sameAzimuth",
+          "targetPitch": "same",
+          "cssClass": "streetview-arrow",
+          "scale": true
+        },
+        {
+          "pitch": 0,
+          "yaw": 179.76,
+          "type": "scene",
+          "text": "Setup 003 (9.2m)",
+          "sceneId": "job_030_setup_003",
+          "targetYaw": "sameAzimuth",
+          "targetPitch": "same",
+          "cssClass": "streetview-arrow",
+          "scale": true
+        },
+        {
+          "pitch": 0,
+          "yaw": -107.22,
+          "type": "scene",
+          "text": "Setup 005 (6.6m)",
+          "sceneId": "job_030_setup_005",
+          "targetYaw": "sameAzimuth",
+          "targetPitch": "same",
+          "cssClass": "streetview-arrow",
+          "scale": true
+        },
+        {
+          "pitch": 0,
+          "yaw": -140.14,
+          "type": "scene",
+          "text": "Setup 006 (13.4m)",
+          "sceneId": "job_030_setup_006",
+          "targetYaw": "sameAzimuth",
+          "targetPitch": "same",
+          "cssClass": "streetview-arrow",
+          "scale": true
+        }
+      ],
+      "hotSpotDebug": true
+    },
+    "job_030_setup_005": {
+      "title": "Setup 005",
+      "panorama": "../example_data/Job 030- Setup 005.jpg",
+      "northOffset": -176.96,
+      "hotSpots": [
+        {
+          "pitch": 0,
+          "yaw": 63.49,
+          "type": "scene",
+          "text": "Setup 002 (14.4m)",
+          "sceneId": "job_030_setup_002",
+          "targetYaw": "sameAzimuth",
+          "targetPitch": "same",
+          "cssClass": "streetview-arrow",
+          "scale": true
+        },
+        {
+          "pitch": 0,
+          "yaw": 37.07,
+          "type": "scene",
+          "text": "Setup 003 (9.6m)",
+          "sceneId": "job_030_setup_003",
+          "targetYaw": "sameAzimuth",
+          "targetPitch": "same",
+          "cssClass": "streetview-arrow",
+          "scale": true
+        },
+        {
+          "pitch": 0,
+          "yaw": -28.98,
+          "type": "scene",
+          "text": "Setup 004 (6.6m)",
+          "sceneId": "job_030_setup_004",
+          "targetYaw": "sameAzimuth",
+          "targetPitch": "same",
+          "cssClass": "streetview-arrow",
+          "scale": true
+        },
+        {
+          "pitch": 0,
+          "yaw": 93.79,
+          "type": "scene",
+          "text": "Setup 006 (8.7m)",
+          "sceneId": "job_030_setup_006",
+          "targetYaw": "sameAzimuth",
+          "targetPitch": "same",
+          "cssClass": "streetview-arrow",
+          "scale": true
+        }
+      ],
+      "hotSpotDebug": true
+    },
+    "job_030_setup_006": {
+      "title": "Setup 006",
+      "panorama": "../example_data/Job 030- Setup 006.jpg",
+      "northOffset": 146.49,
+      "hotSpots": [
+        {
+          "pitch": 0,
+          "yaw": 67.76,
+          "type": "scene",
+          "text": "Setup 002 (8.2m)",
+          "sceneId": "job_030_setup_002",
+          "targetYaw": "sameAzimuth",
+          "targetPitch": "same",
+          "cssClass": "streetview-arrow",
+          "scale": true
+        },
+        {
+          "pitch": 0,
+          "yaw": 17.31,
+          "type": "scene",
+          "text": "Setup 003 (8.7m)",
+          "sceneId": "job_030_setup_003",
+          "targetYaw": "sameAzimuth",
+          "targetPitch": "same",
+          "cssClass": "streetview-arrow",
+          "scale": true
+        },
+        {
+          "pitch": 0,
+          "yaw": -25.35,
+          "type": "scene",
+          "text": "Setup 004 (13.4m)",
+          "sceneId": "job_030_setup_004",
+          "targetYaw": "sameAzimuth",
+          "targetPitch": "same",
+          "cssClass": "streetview-arrow",
+          "scale": true
+        },
+        {
+          "pitch": 0,
+          "yaw": -49.66,
+          "type": "scene",
+          "text": "Setup 005 (8.7m)",
+          "sceneId": "job_030_setup_005",
+          "targetYaw": "sameAzimuth",
+          "targetPitch": "same",
+          "cssClass": "streetview-arrow",
+          "scale": true
+        }
+      ],
+      "hotSpotDebug": true
+    }
+  }
+};
+        var viewer = pannellum.viewer('panorama', tourConfig);
+
+        // On each scene load, create .arrow-icon child divs
+        viewer.on('load', function() {
+            var cfg = viewer.getConfig();
+            if (!cfg.hotSpots) return;
+            cfg.hotSpots.forEach(function(hs) {
+                if (hs.cssClass === 'streetview-arrow' && hs.div && !hs._arrowIcon) {
+                    var arrow = document.createElement('div');
+                    arrow.className = 'arrow-icon';
+                    hs.div.insertBefore(arrow, hs.div.firstChild);
+                    hs._arrowIcon = arrow;
+                }
+            });
+        });
+
+        // rAF loop: compute per-arrow screen-space rotation
+        (function updateArrows() {
+            var cfg = viewer.getConfig();
+            if (cfg && cfg.hotSpots) {
+                var camYaw = viewer.getYaw(), camPitch = viewer.getPitch();
+                var hfov = viewer.getHfov();
+                var canvas = viewer.getRenderer().getCanvas();
+                var cw = canvas.clientWidth;
+                var hfovTan = Math.tan(hfov * Math.PI / 360);
+                var camPR = camPitch * Math.PI / 180;
+                var cpSin = Math.sin(camPR), cpCos = Math.cos(camPR);
+
+                cfg.hotSpots.forEach(function(hs) {
+                    if (!hs._arrowIcon) return;
+                    var hpR = hs.pitch * Math.PI / 180;
+                    var ydR = (-hs.yaw + camYaw) * Math.PI / 180;
+                    var hpS = Math.sin(hpR), hpC = Math.cos(hpR);
+                    var yC = Math.cos(ydR), yS = Math.sin(ydR);
+                    var z = hpS * cpSin + hpC * yC * cpCos;
+                    if (z <= 0) return;
+                    var x1 = -cw / hfovTan * yS * hpC / z / 2;
+                    var y1 = -cw / hfovTan * (hpS * cpCos - hpC * yC * cpSin) / z / 2;
+                    // Point toward horizon (pitch + 1 degree)
+                    var upR = (hs.pitch + 1) * Math.PI / 180;
+                    var upS = Math.sin(upR), upC = Math.cos(upR);
+                    var zU = upS * cpSin + upC * yC * cpCos;
+                    if (zU <= 0) return;
+                    var x2 = -cw / hfovTan * yS * upC / zU / 2;
+                    var y2 = -cw / hfovTan * (upS * cpCos - upC * yC * cpSin) / zU / 2;
+                    var angle = Math.atan2(x2 - x1, -(y2 - y1)) * 180 / Math.PI;
+                    hs._arrowIcon.style.transform = 'rotate(' + angle + 'deg)';
+                });
+            }
+            requestAnimationFrame(updateArrows);
+        })();
+    </script>
+</body>
+</html>
